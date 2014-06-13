@@ -35,7 +35,6 @@ gem 'rails', '~> 4.1'
 gem 'sass-rails', '~> 4.0'
 # Improves on Rails form_for:
 gem 'simple_form'
-gem 'sqlite3'
 # Compresses javacript and css:
 gem 'uglifier', '>= 1.3.0'
 # rails server that handles multiple connections
