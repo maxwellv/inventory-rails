@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
+  resources :jewelries, except: :destroy
+
+  get 'jewelries/sell/:id' => 'jewelries#sell', as: :jewelry_sell
+  get 'jewelries/sellable/:id' => 'jewelries#mark_for_sale', as: :jewelry_sellable
+
+  resources :users, only: :show
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

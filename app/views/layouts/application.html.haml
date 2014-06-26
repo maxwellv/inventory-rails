@@ -8,9 +8,24 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
-    - if notice
-      .alert_box.success = notice
-    - if alert
-      .alert-box.alert = alert
-    = yield
+    .small-3.columns
+      %h1
+    .small-5.columns#middle
+      %h1#header-logo= image_tag "jewelretsy.png", link_to root_path
+      - if notice
+        .alert_box.success= notice
+      - if alert
+        .alert_box.alert= alert
+      %ul#navigation
+        - if user_signed_in?
+          %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+          %li= link_to 'Jewelries', jewelries_path
+          %li= link_to 'Add jewelry', new_jewelry_path
+          %li= link_to 'Your jewelry', user_path(current_user)
+        - else
+          %li= link_to 'Sign in', new_user_session_path
+
+      = yield
+    .small-3.columns
+      %h1
     = javascript_include_tag "application"

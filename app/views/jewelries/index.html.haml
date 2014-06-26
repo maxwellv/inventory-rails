@@ -1,0 +1,26 @@
+-if @jewelries.empty?
+  %h2= "No one has any jewelry for sale! Try making some of your own, then make it sellable."
+-else
+  %h2= "Here are the current jewelries for sale:"
+
+  %table
+    %thead
+      %tr
+        %th Jewelry type
+        %th Materials cost
+        %th Hours worked
+        %th Asking price
+        %th Owner
+        %th Buy?
+    %tbody
+      -@jewelries.each do |j|
+        %tr
+          %th= [nil, "Necklace", "Bracelet", "Earrings"][j.jewelry_type]
+          %th= sprintf("%0.02f", j.materials_cost)
+          %th= sprintf("%0.02f", j.hours_worked)
+          %th= sprintf("%0.02f", j.materials_cost + (j.hours_worked * 10))
+          %th= User.find_by_id(j.user_id).username
+          -if j.user_id != current_user.id
+            %th= link_to "Buy", jewelry_sell_path(j.id)
+          -else
+            %th

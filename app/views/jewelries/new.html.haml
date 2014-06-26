@@ -1,0 +1,7 @@
+%h2 Add jewelry
+= simple_form_for(@jewelry) do |f|
+  = f.input :jewelry_type, as: :select, collection: [['Necklace', 1], ['Bracelet', 2], ['Earrings', 3]]
+  = f.input :materials_cost, as: :integer
+  = f.input :hours_worked, as: :integer
+  = f.input :user_id, as: :hidden, value: current_user.id
+  = f.button :submit, "Add jewelry", method: "post"
