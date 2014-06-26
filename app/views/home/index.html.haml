@@ -1,1 +1,4 @@
-%h2= "Welcome back to Jewelretsy, #{current_user.username}! Please use the links above to make, view, or buy jewelry."
+-if current_user
+  %h2= "Welcome back to Jewelretsy, #{current_user.username}! Please use the links above to make, view, or buy jewelry."
+-else
+  %h2= "Welcome to Jewelretsy! Please sign in above, or sign up if it is your first time here."
